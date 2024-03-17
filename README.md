@@ -59,7 +59,53 @@ The assembly for the platform is pretty simple, all the components have all the 
 
 The payload is released using a two-bar mechanism attached to the movable base platform. The links are actuated using two servo motors placed on diagonal ends (maintains the center of mass). When the links are activated, the platform goes down dropping the payload.
 
-The motors are controlled by Arduino Uno, which is commanded by the onboard Raspberry Pi 4. Using Wi-Fi, we can headlessly connect to the Pi using our personal computer.
-For fast and seamless communication, we will use ROS2 middleware communication on the same Wi-Fi network. Services and nodes will be coded which will help trigger the servo motor whenever we want to release the payload from the required height. One needs to just call the ROS2 service a call to turn the motors on (the motor angle will be controlled by the basic Arduino servo motor code). To bring the platform back again, another ROS2 service will be called to turn the motors at the same angle but in the opposite direction.
+
+![photo_2024-03-17_15-59-21](https://github.com/TahsinOP/IEEE_Skye_Expedition_Drone_Delivery_Design/assets/117567813/23b6a486-ef4b-475d-bd9c-7aa2bad58813)
+
+
+The motors are controlled by Arduino Uno, which is commanded by the onboard Raspberry Pi 4. Using Wi-Fi, we can headlessly connect to the Pi using our personal computer.For fast and seamless communication, we will use ROS2 middleware communication on the same Wi-Fi network. Services and nodes will be coded which will help trigger the servo motor whenever we want to release the payload from the required height. One needs to just call the ROS2 service a call to turn the motors on (the motor angle will be controlled by the basic Arduino servo motor code). To bring the platform back again, another ROS2 service will be called to turn the motors at the same angle but in the opposite direction.
 
 In simple words:
+
+![photo_2024-03-17_16-00-26](https://github.com/TahsinOP/IEEE_Skye_Expedition_Drone_Delivery_Design/assets/117567813/cf3194ce-45f6-4643-be6b-5d2b7ac8095a)
+
+## Platform Attachment
+
+This is one of the most unique solutions our team has developed. When we saw the rulebook now screws, fasteners, etc can be used. According to the given constraints we have come up with an efficient and compatible solution that can be integrated with most UAV applications.
+
+### Method 1: (Rating of electromagnet - 10 kg)
+
+We have used a relay electromagnet which can be controlled using the remote control(RC) used for the drone motion. The electromagnet is fixed to the drone underside and whenever the platform needs to be attached just turn on the magnet it will get attached to the top of the platform (as the top surface has a thin coating of magnetic alloys). In the model, we have used steel as the top material for convenience purposes.
+
+The power supply of the electromagnet will come from the battery installed for the drone controller (mostly Pixhawx used in industry). The RC controller of the drone has extra buttons that can be customized for other purposes. We will use one of those switches to turn ON/OFF the electro-magnet whenever required. To attach the platform to any other UAV just fix the electromagnet to the drone underside (wire it with the controller) and turn the magnet ON.
+
+### Method 2:
+
+In this method also we are using the magnet, but it's now attached to the deployable platform using screws and fasteners. The magnet can be directly controlled by Arduino in this case to turn it ON/OFF, this method is much more compatible and scalable for any UAV. There is no need for any joints to the drone base, just turn the magnet on the magnet will attach to the drone base. The only condition required is that the drone base is made of steel/iron alloys or any metallic alloy.
+
+![Payload_Platform_Attachment_mechanism_workflow](https://github.com/TahsinOP/IEEE_Skye_Expedition_Drone_Delivery_Design/assets/117567813/c4272025-436b-4ca0-8ea3-e518c833ee08)
+
+
+## Landing Gear
+
+We removed the original landing gear as it was interfering with our deployable platform. We mimicked the old landing gear design in a simple way and integrated it into the platform base. It serves the same functionality with a wide base to land safely on any terrain.
+
+![photo_2024-03-17_16-02-10](https://github.com/TahsinOP/IEEE_Skye_Expedition_Drone_Delivery_Design/assets/117567813/4ff3c250-374c-429b-bd8e-f04a793e25c0)
+
+## Multiple Payloads Case
+
+For multiple payloads just extrude the green part, the landing gear base, and the movable layer to either side depending on the number of payloads, the release mechanism will be the same with two servo motor controls for each of the payloads respectively.
+
+# CFD Analysis
+
+The final weight of the platform (Theoretical): 2243.659 g = 2.4KG
+
+The CFD analysis for both the drone and the deployable platform will be attached in a separate PDF file with all the figures, results, and parameters.
+
+![photo_2024-03-17_16-03-14](https://github.com/TahsinOP/IEEE_Skye_Expedition_Drone_Delivery_Design/assets/117567813/24de8418-3578-4171-a244-29ac9d3b0a25)
+
+![photo_2024-03-17_16-04-41](https://github.com/TahsinOP/IEEE_Skye_Expedition_Drone_Delivery_Design/assets/117567813/8474421f-058f-4494-b901-cfa030ab4601)
+
+
+
+
